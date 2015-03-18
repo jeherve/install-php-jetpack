@@ -285,6 +285,20 @@ Manage
 #manage ul {
 	margin-top: 2em;
 }
+
+/*
+Protect
+*************************/
+#protect .protect-logo {
+	width: 30%;
+	float: left;
+	height: 200px;
+}
+
+#protect ul {
+	margin-top: 2em;
+}
+
 /*
 Last Slide
 *************************/
