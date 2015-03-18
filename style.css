@@ -280,6 +280,12 @@ Tiled Galleries & Carousel
 				padding-top: 2em;
 }
 /*
+Manage
+*************************/
+#manage ul {
+	margin-top: 2em;
+}
+/*
 Last Slide
 *************************/
 
