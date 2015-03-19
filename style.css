@@ -300,6 +300,20 @@ Protect
 }
 
 /*
+Appearance
+*************************/
+
+#appearance img {
+	width: 50%;
+	float: right;
+	margin-bottom: 2em;
+}
+
+#appearance .theme-tools {
+	clear:both;
+}
+
+/*
 Last Slide
 *************************/
 
