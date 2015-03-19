@@ -265,6 +265,15 @@ Step 5 - Jetpack
 #jetpack img {
 				margin-bottom: 1em;
 }
+
+/*
+Photon
+*************************/
+
+#photon img {
+	width: 20%;
+	float: right;
+}
 /*
 Tiled Galleries & Carousel
 *************************/
