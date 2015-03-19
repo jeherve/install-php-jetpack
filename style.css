@@ -267,6 +267,16 @@ Step 5 - Jetpack
 }
 
 /*
+Blogging tools
+*************************/
+
+.future .hide-future,
+.past .hide-future {
+	opacity: 0;
+}
+
+
+/*
 Photon
 *************************/
 
