@@ -279,6 +279,16 @@ Tiled Galleries & Carousel
 #tiled-galleries-carousel .carousel {
 				padding-top: 2em;
 }
+
+/*
+Social
+*************************/
+
+#social img {
+	width: 70%;
+	margin: 1em 4em;
+}
+
 /*
 Manage
 *************************/
