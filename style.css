@@ -311,3 +311,9 @@ Last Slide
 				font-size: 2em;
 				margin-top: 2.3em;
 }
+
+#overview .footer {
+	margin: 300px 0 0 0;
+	text-align: center;
+	color: #999;
+}
