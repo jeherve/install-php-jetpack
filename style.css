@@ -310,6 +310,15 @@ Photon
 	width: 44%;
 }
 
+
+/*
+Need more filters
+*************************/
+
+#need-more-filters img {
+	float: right;
+	width: 20%;
+}
 /*
 Last Slide
 *************************/
