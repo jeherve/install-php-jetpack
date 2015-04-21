@@ -240,13 +240,7 @@ Step 1 - Intro
 #intro {
 				padding-bottom: 6em;
 }
-/*
-Step 4 - WordPress.com
-*************************/
 
-#wpcom ul {
-				margin-left: 5em;
-}
 /*
 Step 5 - Jetpack
 *************************/
@@ -267,13 +261,6 @@ Step 5 - Jetpack
 }
 
 /*
-How do I install Jetpack?
-*************************/
-#jetpack-info ol {
-	margin-top: 1em;
-}
-
-/*
 Blogging tools
 *************************/
 
@@ -291,63 +278,7 @@ Photon
 	width: 20%;
 	float: right;
 }
-/*
-Tiled Galleries & Carousel
-*************************/
 
-#tiled-galleries-carousel .images {
-				clear: both;
-}
-#tiled-galleries-carousel img {
-				width: 50%;
-				float: left;
-}
-#tiled-galleries-carousel .carousel {
-				padding-top: 2em;
-}
-
-/*
-Social
-*************************/
-
-#social img {
-	width: 70%;
-	margin: 1em 4em;
-}
-
-/*
-Manage
-*************************/
-#manage ul {
-	margin-top: 2em;
-}
-
-/*
-Protect
-*************************/
-#protect .protect-logo {
-	width: 30%;
-	float: left;
-	height: 200px;
-}
-
-#protect ul {
-	margin-top: 2em;
-}
-
-/*
-Appearance
-*************************/
-
-#appearance img {
-	width: 50%;
-	float: right;
-	margin-bottom: 2em;
-}
-
-#appearance .theme-tools {
-	clear:both;
-}
 
 /*
 Last Slide

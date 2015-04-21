@@ -5,23 +5,27 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<meta name="viewport" content="width=1024" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<title>Blast off with Jetpack!</title>
+	<title>Get a headstart with install.php & Jetpack</title>
 
-	<meta name="description" content="Discover the Jetpack plugin, and why should you give it a try on your WordPress site." />
+	<meta name="description" content="Discover how to customize your WordPress installation to earn some time in your projects." />
 	<meta name="author" content="Jeremy Herve" />
 
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Blast off with Jetpack!" />
-	<meta property="og:description" content="Discover the Jetpack plugin, and why should you give it a try on your WordPress site." />
-	<meta property="og:url" content="http://slides.jeremyherve.com/discover-jetpack/" />
+	<meta property="og:title" content="Get a headstart with install.php & Jetpack" />
+	<meta property="og:description" content="Discover how to customize your WordPress installation to earn some time in your projects." />
+	<meta property="og:url" content="http://slides.jeremyherve.com/install-php-jetpack/" />
 	<meta property="og:site_name" content="Jeremy Herve" />
-	<meta property="og:image" content="http://slides.jeremyherve.com/discover-jetpack/img/jp-lightning.png" />
+	<meta property="og:image" content="http://slides.jeremyherve.com/install-php-jetpack/img/jp-lightning.png" />
 	<meta property="og:locale" content="en_US" />
 	<meta name="twitter:site" content="@jeherve" />
 
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,600,800" rel="stylesheet" />
 
+	<!-- General styles -->
 	<link href="style.css" rel="stylesheet" />
+
+	<!-- Syntax Highlighting -->
+	<link rel="stylesheet" href="highlight.css" />
 
 	<link rel="shortcut icon" href="favicon.ico" />
 	<link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -33,9 +37,9 @@
 
 	<!-- Intro slide. Title -->
 	<div id="intro" class="step" data-x="-1000" data-y="-1500">
-		<h1>Blast off with Jetpack</h1>
+		<h1>Get a headstart with install.php & Jetpack</h1>
 
-		<p>Take Your Site to the Next Level.</p>
+		<p>Discover how to customize your WordPress installation to earn some time in your projects.</p>
 	</div>
 
 	<!-- Who am I, what do I do? -->
@@ -56,30 +60,227 @@
 		<img alt="Automattic Products" src="img/a8c-logos.png" />
 	</div>
 
-	<!-- Our most popular product, WordPress.com -->
-	<div id="wpcom" class="step slide" data-x="-1000" data-y="3000">
-		<img alt="WordPress.com" src="img/wpcom-logo.svg" />
+	<!-- Installing WordPress. You know the drill, you know how it works. -->
+	<div id="installing-wordpress" class="step slide" data-x="-1000" data-y="3000">
 		<ul>
-			<li>Easiest way to create a free website or blog.</li>
-			<li>70+ million sites.</li>
-			<li>Dozens of pre-installed plugins.</li>
-			<li>200+ themes, free and Premium.</li>
-			<li>You can't install new themes or plugins.</li>
+			<li>5-minute install.</li>
+			<li>Is it really 5 minutes?</li>
+			<li>Think of the things you have to do after each installation.</li>
 		</ul>
 	</div>
 
-	<!-- How to bring this product to everyone, including those using the self-hosted version of WordPress? -->
-	<div id="jetpack" class="step slide" data-x="-1000" data-y="4500">
+	<!-- Customize WordPress. What do you usually change? -->
+	<div id="customizing-wordpress" class="step slide" data-x="-1000" data-y="4500">
+		<ul>
+			<li>Change General Settings (Timezone, Week Start, Default Category, Permalinks).</li>
+			<li>Remove the “Hello World” post.</li>
+			<li>Create basic pages (Contact, About, Subscribe).</li>
+			<li>Create new Users (for your client, for your editors).</li>
+			<li>Activate plugins.</li>
+		</ul>
+	</div>
+
+	<!-- A WordPress install with a little twist -->
+	<div id="install-twist" class="step slide" data-x="500" data-y="4500">
+		<h2>Install WP, with a twist!</h2>
+		<ul>
+			<li>Git repo with the latest stable version of WordPress.</li>
+			<li>Submodules for the plugins you use on each site you set up.</li>
+			<li>Custom install.php file.</li>
+		</ul>
+	</div>
+
+	<!-- install.php, what is this thing? -->
+	<div id="install-php" class="step slide" data-x="500" data-y="3000">
+		<h2>install.php</h2>
+		<ul>
+			<li>wp-content/install.php</li>
+			<li>Runs when you install WordPress.</li>
+			<li>Use it to overwrite default WP settings.</li>
+		</ul>
+	</div>
+
+	<!-- install.php, change general settings -->
+	<div id="install-general-settings" class="step slide" data-x="500" data-y="1500">
+<pre><code class="php">/**
+ * Set a site description.
+ */
+update_option( 'blogdescription', 'A site description' );
+</code></pre>
+	</div>
+
+	<!-- install.php, change Timezone setting -->
+	<div id="install-timezone" class="step slide" data-x="500" data-y="0">
+<pre><code  class="php">/**
+ * Set Timezone.
+ */
+$timezone = "Europe/Bucharest";
+update_option( 'timezone_string', $timezone );
+</code></pre>
+	</div>
+
+	<!-- install.php, change when the week starts -->
+	<div id="install-week" class="step slide" data-x="500" data-y="-1500">
+<pre><code class="php">/**
+ * Start the week on Monday.
+ */
+update_option( 'start_of_week', 1 );
+</code></pre>
+	</div>
+
+	<!-- install.php, change permalinks-->
+	<div id="install-permalinks" class="step slide" data-x="500" data-y="-3000">
+<pre><code class="php">/**
+ * Update Permalinks to use only post names.
+ */
+update_option( 'selection','custom' );
+update_option( 'permalink_structure','/%postname%/' );
+$wp_rewrite->init();
+$wp_rewrite->flush_rules();
+</code></pre>
+	</div>
+
+	<!-- install.php, create an editor-->
+	<div id="install-editor-user" class="step slide" data-x="500" data-y="-4500">
+<pre><code class="php">/**
+ * Create an editor.
+ */
+$username = 'jeherve';
+$userdata = array(
+	'user_login'	=> $username,
+	'user_pass'	=> wp_generate_password(),
+	'user_email'	=> 'jeremy@jeremy.hu',
+	'user_url'		=> 'http://jeremy.hu/',
+	'role'			=> 'editor'
+);
+
+$self_id = username_exists( $username );
+
+if ( ! $self_id ) {
+	$self_id = wp_insert_user( $userdata );
+	update_user_option( $self_id, 'default_password_nag', true, true );
+}
+</code></pre>
+	</div>
+
+	<!-- install.php, remove first post-->
+	<div id="install-remove-hello-world" class="step slide" data-x="500" data-y="-6000">
+<pre><code class="php">/**
+ * Delete the default post.
+ */
+wp_delete_post( 1, true );
+</code></pre>
+	</div>
+
+	<!-- install.php, Activate favorite plugins-->
+	<div id="install-activate-plugins" class="step slide" data-x="500" data-y="-7500">
+<pre><code class="php">/**
+ * Enable your favourite plugins.
+ */
+require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+// Your plugin list.
+$plugin_list = array(
+	'akismet/akismet.php',
+	'jeherve-func/jeherve-func.php',
+	'jetpack/jetpack.php',
+	'vaultpress/vaultpress.php'
+);
+
+// Enable each one of them.
+foreach( $plugin_list as $plugin ) {
+	$plugin_dir = WP_PLUGIN_DIR . "/{$plugin}";
+	if ( file_exists( $plugin_dir ) && ! is_plugin_active( $plugin ) ) {
+		activate_plugin( $plugin );
+	}
+}
+</code></pre>
+	</div>
+
+	<!-- Plugins? Why should you use plugins for? -->
+	<div id="why-plugins" class="step slide" data-x="3000" data-y="0" data-z="-8000">
+		<h2>Customize your WP installation with plugins</h2>
+		<ul>
+			<li>Basic Security options in a Must-Use (mu) plugin.</li><!-- no need to enable, can't be disabled -->
+			<li>Settings to overwrite default options in WordPress.</li>
+			<li>Configure and customize plugins.</li>
+		</ul>
+	</div>
+
+	<!-- Let's dive in. mu-plugin example -->
+	<div id="plugins-pingbacks" class="step slide" data-x="4500" data-y="1500" data-z="-8000" data-rotate="90">
+		<h2>Security Options</h2>
+<pre><code class="php">/**
+ * Force deactivate pingbacks.
+ */
+function jeherve_deactivate_pings( $methods ) {
+	unset( $methods['pingback.ping'] );
+	return $methods;
+}
+add_filter( 'xmlrpc_methods', 'jeherve_deactivate_pings' );
+</pre></code>
+	</div>
+
+	<!-- Security options -->
+	<div id="plugins-security" class="step slide" data-x="3000" data-y="3000" data-z="-8000" data-rotate="180">
+<pre><code class="php">// No one can register, ever.
+function jeherve_option_users_can_register( $value ) {
+	return '0';
+}
+add_filter( 'pre_option_users_can_register', 'jeherve_option_users_can_register' );
+
+// Force the admin email address.
+function jeherve_option_admin_email( $value ) {
+	return 'jeremy@jeremy.hu';
+}
+add_filter( 'option_admin_email', 'jeherve_option_admin_email' );
+</pre></code>
+	</div>
+
+	<!-- Auto Update your themes and plugins -->
+	<div id="plugins-autoupdate" class="step slide" data-x="1500" data-y="1500" data-z="-8000" data-rotate="270">
+		<h2>Auto-update Options</h2>
+<pre><code class="php">// Automatically update plugins.
+add_filter( 'auto_update_plugin', '__return_true' );
+
+// Automatically update themes.
+add_filter( 'auto_update_theme', '__return_true' );
+</pre></code>
+	</div>
+
+	<!-- What should be in a functionality plugin -->
+	<div id="functionality-plugins" class="step slide" data-x="6000" data-y="0" data-z="-8000" data-rotate="360">
+		<h2>Functionality plugins</h2>
+		<ul>
+			<li>Paste code snippets there instead of in your theme's functions.php.</li>
+			<li>Customize other plugins.</li>
+		</ul>
+	</div>
+
+	<!-- What should be in a functionality plugin -->
+	<div id="functionality-akismet" class="step slide" data-x="6000" data-y="1500" data-z="-8000" data-rotate="360">
+		<h2>Set up Akismet</h2>
+<pre><code class="php">/**
+ * Automatically set Akismet to use your API Key.
+ * http://apikey.wordpress.com/
+ */
+function jeherve_akismet_key() {
+	return 'YOUR_API_KEY';
+}
+add_filter( 'akismet_get_api_key', 'jeherve_akismet_key' );
+</pre></code>
+	</div>
+
+	<!-- How to customize Jetpack -->
+	<div id="jetpack" class="step slide" data-x="6000" data-y="3000" data-z="-8000" data-rotate="360">
 		<img alt="Jetpack" src="img/jetpack-logo.svg" />
 	</div>
 
 	<!-- Why should you be interested in Jetpack? -->
-	<div id="why-jetpack" class="step slide" data-x="-4000" data-y="4500" data-z="-8000">
+	<div id="why-jetpack" class="step slide" data-x="6000" data-y="4500" data-z="-8000" data-rotate="360">
 		<h2>Why should I install it?</h2>
-
 		<ul>
 			<li>It includes all the features you need when starting a new blog.</li>
-			<li>Was your site on WordPress.com before? You'll get all the features you used on WordPress.com.</li>
 			<li>It's modular. You can use one of its features, or all of them.</li>
 			<li>It's easier to update one plugin than 30.</li>
 			<li>Leverage the WordPress.com cloud, thus saving resources on your own server.</li>
@@ -87,192 +288,90 @@
 		</ul>
 	</div>
 
-    <!-- Let's dive in. More about Jetpack, what it is -->
-    <div id="jetpack-info" class="step slide" data-x="-2500" data-y="6000" data-z="-8000" data-rotate="90">
-        <h2>How do I install it?</h2>
-
-        <p>Jetpack is a bridge between WordPress.com and your self-hosted WordPress site.</p>
-        <ol>
-            <li>In your dashboard, Plugins > Add New > Jetpack.</li>
-            <li>Connect the plugin to your WordPress.com account.</li>
-        </ol>
-    </div>
-
-	<!--
-		Let me tell you about my favorite Jetpack modules. I think some of these might be interesting for you.
-
-		Let's start with Stats.
-		Simple to use.
-		Quick view of your stats right from your dashboard.
-
-	-->
-	<div id="stats" class="step slide" data-x="500" data-y="-1500">
-		<h2>Stats</h2>
-
-		<img alt="Stats" src="img/modules/stats.png" />
+	<!-- How to customize Jetpack to fit each one of your projects. Deactivate and hide what you don't need first. -->
+	<div id="customize-jetpack-modules" class="step slide" data-x="6000" data-y="6000" data-z="-8000" data-rotate="360">
+		<h2>Remove modules</h2>
+<pre><code class="php">// Do not activate, and hide the Stats module so your clients can't activate it later.
+function jeherve_kill_stats( $modules ) {
+	unset( $modules['stats'] );
+	return $modules;
+}
+add_filter( 'jetpack_get_available_modules', 'jeherve_kill_stats' );
+</pre></code>
 	</div>
 
-	<!--
-		Writing / Blogging tools
+	<!-- Customize Photon -->
+	<div id="photon" class="step slide" data-x="6000" data-y="7500" data-z="-8000" data-rotate="360">
+		<h2>Photon: lossy image compression</h2>
+<pre><code class="php">// Compress the quality of all jpeg files.
+function jeherve_loss_compression_photon( $args ) {
+	$args['quality'] = 80;
+	return $args;
+}
+add_filter( 'jetpack_photon_pre_args', 'jeherve_loss_compression_photon' );
+</pre></code>
+	</div>
 
-		Useful tools for bloggers
-	-->
-	<div id="writing" class="step slide" data-x="500" data-y="0">
-		<h2>Blogging Tools</h2>
+	<!-- Customize SSO -->
+	<div id="sso-hide" class="step slide" data-x="6000" data-y="9000" data-z="-8000" data-rotate="360">
+		<img alt="WordPress.com log in form" src="img/modules/sso.jpg" />
+<pre><code class="php">// Redirect all logins to WordPress.com.
+add_filter( 'jetpack_sso_bypass_login_forward_wpcom', '__return_true' );
 
+// Or hide your log in form, and only show a WordPress.com log in button.
+add_filter( 'jetpack_remove_login_form', '__return_true' );
+</pre></code>
+	</div>
+
+	<!-- Do not add any sharing counts to Jetpack sharing buttons -->
+	<div id="sharing-counts" class="step slide" data-x="6000" data-y="10500" data-z="-8000" data-rotate="360">
+		<img alt="Sharing counts" src="img/modules/sharing-counts.jpg" />
+<pre><code class="php">/**
+ * Disable counts from Jetpack Sharing buttons.
+ */
+add_filter( 'jetpack_sharing_counts', '__return_false' );
+</pre></code>
+	</div>
+
+	<!-- Do not add any sharing counts to Jetpack sharing buttons -->
+	<div id="count-related-posts" class="step slide" data-x="6000" data-y="12000" data-z="-8000" data-rotate="360">
+<pre><code class="php">/**
+ * Display 6 Related Posts instead of 3.
+ */
+function jeherve_more_related_posts( $options ) {
+	$options['size'] = 6;
+	return $options;
+}
+add_filter( 'jetpack_relatedposts_filter_options', 'jeherve_more_related_posts' );
+</pre></code>
+	</div>
+
+	<!-- The sky is the limit -->
+	<div id="functionality-summary" class="step slide" data-x="10000" data-y="7000" data-scale="5" data-z="-8000" data-rotate="360">
+		<h2>Functionality plugins: get a headstart on your new site</h2>
 		<ul>
-			<li>Markdown.</li>
-			<li>Spelling and Grammar Check.</li>
-			<li>Shortcodes.</li>
-			<li>Email Subscriptions.</li>
-		</ul>
-	</div>
-
-    <!-- First Markdown -->
-    <div id="markdown" class="step slide" data-x="500" data-y="0">
-        <div class="hide-future">
-            <h2>Blogging Tools</h2>
-
-            <img alt="Markdown" src="img/modules/markdown.png" />
-            <p>Markdown.</p>
-        </div>
-    </div>
-
-    <!-- Then spellcheck -->
-    <div id="spellcheck" class="step slide" data-x="500" data-y="0">
-        <div class="hide-future">
-            <h2>Blogging Tools</h2>
-
-            <img alt="Spelling and Grammar Check" src="img/modules/spellcheck.png" />
-            <p>Spelling and Grammar Check.</p>
-        </div>
-    </div>
-
-    <!-- Then shortcodes -->
-    <div id="shortcodes" class="step slide" data-x="500" data-y="0">
-        <div class="hide-future">
-            <h2>Blogging Tools</h2>
-
-            <img alt="Shortcodes" src="img/modules/shortcodes.png" />
-            <p>Shortcodes.</p>
-        </div>
-    </div>
-
-    <!-- Then Subscriptions -->
-    <div id="subscriptions" class="step slide" data-x="500" data-y="0">
-        <div class="hide-future">
-            <h2>Blogging Tools</h2>
-
-            <img alt="Subscriptions" src="img/modules/subscriptions.png" />
-            <p>Subscriptions.</p>
-        </div>
-    </div>
-
-	<!-- Photon -->
-	<div id="photon" class="step slide" data-x="500" data-y="1500">
-		<h2>Photon</h2>
-
-        <img alt="Photon" src="img/modules/photon.jpg" />
-		<ul>
-			<li style="padding-top: 0.3em;">Free image CDN.</li>
-			<li>Saves bandwidth on your server.</li>
-			<li>No configuration needed, works out of the box.</li>
-			<li style="padding-top: 1em;">On-the-fly image resizing allows serving high-res images on Retina devices.</li>
-			<li>Customizable (you can change quality, colors, contrast, ...).</li>
-		</ul>
-	</div>
-
-	<!-- Tiled Galleries & Carousel -->
-	<div id="tiled-galleries-carousel" class="step slide" data-x="500" data-y="3000">
-		<h2>Tiled Galleries & Carousel</h2>
-
-		<div class="images">
-			<img class="tiled" alt="Tiled Galleries" src="img/modules/tiled-galleries.png" />
-			<img class="carousel" alt="Carousel" src="img/modules/carousel.png" />
-		</div>
-		<p style="clear:both;">Easy way to enhance the default look of WordPress Galleries.</p>
-		<p>Use Photon to resize your images on the fly and create a nice tile effect.</p>
-	</div>
-
-	<!--
-		Social features have become a must for blogs and business sites alike.
-		Everyone is on Facebook and Twitter, your site should be there too.
-		Since your readers are there too, you can offer them ways to use their accounts on your site.
-	-->
-	<div id="social" class="step slide" data-x="500" data-y="4500">
-		<h2>Social Features</h2>
-
-		<ol>
-			<li><strong>Sharing buttons:</strong> different options, different looks, customizable, extendable.</li>
-			<li><strong>Publicize:</strong> automatically push your posts to Facebook, Twitter, Google+, Path, and LinkedIn.</li>
-			<li><strong>Comments:</strong> allow your readers to comment using their Facebook, Twitter, or Google+ account.</li>
-		</ol>
-        <img alt="Publicize" src="img/modules/publicize.png" />
-	</div>
-
-	<!-- Jetpack Manage -->
-	<div id="manage" class="step slide" data-x="500" data-y="6000">
-		<h2>Remote Site Management</h2>
-
-		<img alt="Jetpack Manage" src="img/modules/manage.png" />
-		<ul>
-			<li>Activate, deactivate, update plugins, on one site or all of them.</li>
-			<li>Publish posts and pages.</li>
-			<li>Monitor your site's uptime.</li>
-		</ul>
-	</div>
-
-	<!-- Protect -->
-	<div id="protect" class="step slide" data-x="500" data-y="7500">
-		<h2>Protect</h2>
-
-        <img class="protect-logo" alt="Jetpack Protect" src="img/protect.svg" />
-		<ul>
-			<li>Brute force attack prevention: your login form is protected.</li>
-			<li>Coming soon: File Scanning for security issues.</li>
-		</ul>
-	</div>
-
-	<!--
-		Appearance Tools
-
-		Big bucket of many things. Hidden gems.
-		Some of these modules are kind of hidden
-	-->
-	<div id="appearance" class="step slide" data-x="500" data-y="9000">
-		<h2>Appearance Tools</h2>
-
-        <img alt="Custom CSS" src="img/modules/custom-css.png" />
-        <p class="custom-css">Custom CSS: add custom CSS from your dashboard. Good alternative to simple Child Themes.</p>
-		<p class="theme-tools">Theme Tools: Custom Post Types, Breadcrumbs, Responsive Videos, Site Logo, ...</p>
-	</div>
-
-	<!-- Next is Related Posts -->
-	<div id="related-posts" class="step slide" data-x="500" data-y="10050">
-		<h2>Related Posts</h2>
-
-		<img alt="Stats" src="img/modules/related-posts.png" />
-		<ul>
-			<li>Uses Elasticsearch on WordPress.com to index all your content and offer Related Posts.</li>
-			<li>Takes foreign languages into account.</li>
-			<li>Can be customized to fit your needs.</li>
+			<li>Customize other plugins as well.</li>
+			<li>Earn some time when setting up new sites.</li>
+			<li>Don't do the same thing over and over.</li>
+			<li>Get to know the plugins you use every day a bit better.</li>
 		</ul>
 	</div>
 
 
 	<!-- The end -->
-	<div id="overview" class="step" data-x="8000" data-y="1500" data-scale="10">
+	<div id="overview" class="step" data-x="15000" data-y="1500" data-scale="10" data-rotate="360">
 		<img class="jetpack-logo" alt="Jetpack Logo" src="img/jp-lightning.png" />
 		<div class="last-questions">
 			<p>Questions?</p>
 		</div>
-        <div class="footer">
-            Jeremy Herve | <a href="http://jeremy.hu">jeremy.hu</a> | <a href="https://twitter.com/jeherve">@jeherve</a> | <a href="http://jetpack.me">jetpack.me</a>
-        </div>
+		<div class="footer">
+			Jeremy Herve | <a href="http://jeremy.hu">jeremy.hu</a> | <a href="https://twitter.com/jeherve">@jeherve</a> | <a href="http://jetpack.me">jetpack.me</a>
+		</div>
 	</div>
 
 </div><!-- #impress -->
 
+<!-- Helping hint -->
 <div class="hint">
 	<p>Use a spacebar or arrow keys to navigate</p>
 </div>
@@ -282,8 +381,13 @@ if ("ontouchstart" in document.documentElement) {
 }
 </script>
 
+<!-- Launch Impress.js, let the animations begin! -->
 <script src="js/impress.js"></script>
 <script>impress().init();</script>
+
+<!-- Syntax Highlighting -->
+<script src="js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 </body>
 </html>
