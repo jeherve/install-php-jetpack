@@ -271,14 +271,44 @@ Blogging tools
 
 
 /*
+Installing WordPress
+*************************/
+
+#installing-wordpress img {
+	width: 30%;
+	float: right;
+}
+
+#installing-wordpress ul {
+	padding-top: 55px;
+}
+
+#sharing-counts img {
+	margin: 0 150px;
+	width: 40%;
+}
+
+/*
+Remove modules
+*************************/
+
+#customize-jetpack-modules img {
+	float: right;
+	width: 24%;
+}
+
+#customize-jetpack-modules h2 {
+	line-height: 185px;
+}
+
+/*
 Photon
 *************************/
 
 #photon img {
-	width: 20%;
 	float: right;
+	width: 44%;
 }
-
 
 /*
 Last Slide
